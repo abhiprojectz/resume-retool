@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block title %} {% endblock %}</title>
+
+      {% load static %}
+      <!-- CSS files -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700">
+      <script src="{% static 'js/tabler.min.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/tabler-flags.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/tabler-payments.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/tabler-vendors.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      <link rel="stylesheet" href="{% static 'css/p_styles.css' %}">
+
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      :root {
+      	--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+      }
+      body {
+      	font-feature-settings: "cv03", "cv04", "cv11";
+      }
+
+      
+      @font-face {
+         font-family: 'formula_bold'; 
+         src: url("{% static 'css/FormulaCondensed-Bold.otf' %}"); 
+       }
+     
+       @font-face {
+         font-family: 'inter_light'; 
+         src: url("{% static 'css/Inter-Regular.ttf' %}"); 
+       }
+    </style>
+
+
+   </head>
+   <body>
+
+      {% block navbar %}{% endblock navbar %}
+
+
+
+      {% block content %}{% endblock %}
+
+   </body>
+</html>

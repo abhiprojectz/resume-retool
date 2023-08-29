@@ -1,0 +1,255 @@
+{% extends "./base.html" %}
+{% load static %}
+
+
+{% block content %}
+<style>
+  .flex_bg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+</style>
+<body style="background: var(--gray-50, #F9FAFB);">
+<div class="page">
+  <!-- main Navbar  -->
+  <header class="navbar navbar-expand-md d-print-none" style="background-color: #fff; background: #FFF;
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10); padding-bottom: 0;">
+    <div class="container-xl">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3" style="border-bottom: 2px solid #6366F1;
+      ">
+        <img class="{% url 'app:dashboard' %}" src="{% static 'img/logo.png' %}" alt="" style="height: 50px;
+        flex: 1 0 0;">
+My Documents
+      </h1>
+      <div class="navbar-nav flex-row order-md-last">
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" style="display: flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" style="width: 30px; height:30px" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+              <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+              <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+           </svg>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-2" style="border-radius: 15px;line-height:24px; ">
+            <div class="flex_bg p-2"><h1 class="header">Account</h1> 
+
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'app:user_profile' %}" class="dropdown-item" style="flex-direction: column; align-items:flex-start; "><div class="page-title"> {{ user }} </div> <div class="subheader">{{ user.email }} </div>  </a>
+            
+
+            <a href="{% url 'users:logout' %}" class="dropdown-item" style="display: flex; justify-content:space-between;"><span>Sign out</span> <span class="float:right"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+              <path d="M8 5L13 10L8 15" stroke="#475467" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    .dz-progress {
+      opacity: 0 !important;
+      z-index: 0 !important;
+    }
+  </style>
+
+
+  <div class="page-wrapper">
+    <!-- Page header -->
+    <div class="page-header d-print-none">
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="mb-3">
+            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3 p-2" style="border-radius: 8px;
+            border: 2px solid #000;
+            background: #F7FAFC;" >
+              <a href="{% url 'users:home' %}"><-- Back</a>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body -->
+    <div class="page-body">
+      <div class="container-xl">
+        <!-- file uploads  -->
+        <div class="">
+          <div class="mb-3" id="error_msg" style="display: none;">
+            <div class="alert alert-warning" role="alert">
+              <div class="d-flex">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10.24 3.957l-8.422 14.06a1.989 1.989 0 0 0 1.7 2.983h16.845a1.989 1.989 0 0 0 1.7 -2.983l-8.423 -14.06a1.989 1.989 0 0 0 -3.4 0z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+                </div>
+                <div>
+                  <h4 class="alert-title">You've reached your limit!</h4>
+                  <div class="text-secondary">Sorry! You've reached your limit of docs. Please upgrade.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="mb-3 mt-3 py-4">
+            <div class="card" style="border-radius: 8px;
+            border: 2px dashed #E2E8F0;">
+              <div class="card-body col-6 m-auto">
+                <form class="dropzone" id="dropzone-custom" action="." autocomplete="off" novalidate>
+                  <div class="fallback">
+                    <input name="file" type="file" />
+                  </div>
+                  <div class="dz-message"  style="margin: 0;">
+                    <div class="text-center" style="display: flex;">
+                      <div class="fmb p-2">Processing time may vary, be patient.</div>                
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" style="margin-top: 20px; margin-bottom:20px">
+                      <path d="M1.75 18.625V21.4375C1.75 22.1834 2.04632 22.8988 2.57376 23.4262C3.10121 23.9537 3.81658 24.25 4.5625 24.25H21.4375C22.1834 24.25 22.8988 23.9537 23.4262 23.4262C23.9537 22.8988 24.25 22.1834 24.25 21.4375V18.625M7.375 7.375L13 1.75M13 1.75L18.625 7.375M13 1.75V18.625" stroke="#555555" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="dropzone-msg-title">Drop your resume here or click to upload</h3>
+                    <span class="dropzone-msg-desc">Only PDF/DOCX files < 25MB.</span>
+                  </div>
+                </form>
+
+
+                <div class="">
+                  <div
+                    id="btnup"
+                    onclick="upload_img()"
+                    class="btn btn_zap w-100 mt-3 mb-3" style="display: flex; gap:15px;"
+                  >
+                    <div class="spinner-border text-blue" role="status" id="_spinner" style="display: none;"></div>
+                    <svg id="_uploadio" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                      <path d="M7 9l5 -5l5 5"></path>
+                      <path d="M12 4l0 12"></path>
+                   </svg>
+                    <div id="btn_txt">Upload File</div>
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Features  -->
+          <div class="row row-cards mb-3">
+            {% for i in docs %}
+            <div class="col-md-5 col-xl-4">
+              <div class="card"  style="min-height: 350px; border-radius: 12px;
+              background: var(--white, #FFF);
+              
+              /* Shadow/md */
+              box-shadow: 0px 2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.10);">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.8 2H15L20 7V14.1708C19.5905 14.3152 19.2062 14.5512 18.8787 14.8787L16.9966 16.7608C15.8186 15.7085 14.0095 15.7478 12.8787 16.8787C11.7071 18.0503 11.7071 19.9497 12.8787 21.1213L13.7574 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2ZM14 7.2V3.5L18.5 8H14.8C14.52 8 14.38 8 14.273 7.9455C14.1789 7.89757 14.1024 7.82108 14.0545 7.727C14 7.62004 14 7.48003 14 7.2ZM7 9C7 8.44772 7.44772 8 8 8H9C9.55228 8 10 8.44772 10 9C10 9.55228 9.55228 10 9 10H8C7.44772 10 7 9.55228 7 9ZM7 13C7 12.4477 7.44772 12 8 12H14C14.5523 12 15 12.4477 15 13C15 13.5523 14.5523 14 14 14H8C7.44772 14 7 13.5523 7 13ZM7 17C7 16.4477 7.44772 16 8 16H10.5C11.0523 16 11.5 16.4477 11.5 17C11.5 17.5523 11.0523 18 10.5 18H8C7.44772 18 7 17.5523 7 17Z" fill="#475467"/>
+                        <path d="M17.7071 21.7071L21.7071 17.7071C22.0976 17.3166 22.0976 16.6834 21.7071 16.2929C21.3166 15.9024 20.6834 15.9024 20.2929 16.2929L17 19.5858L15.7071 18.2929C15.3166 17.9024 14.6834 17.9024 14.2929 18.2929C13.9024 18.6834 13.9024 19.3166 14.2929 19.7071L16.2929 21.7071C16.6834 22.0976 17.3166 22.0976 17.7071 21.7071Z" fill="#475467"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <a href="{% url 'app:app' i.id as app_url %}{% with file_url='http://127.0.0.1:8000/'|add:i.file_id %}{{ app_url }}?file={{ file_url }}#zoom=page-width{% endwith %}" style="color: #000;"><div class="card-title mb-1 bold">{{ i.name }}</div></a>
+                  <div class="text-secondary">{{ i.short_summary|slice:":400"|truncatechars:400 }}...</div>
+
+                </div>
+                <div class="p-3">
+                  <p class="subheader">{{ i.created_at }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+  
+  
+  
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+<link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/libs/dropzone/dist/dropzone-min.js"></script>
+
+{% csrf_token %}
+
+<script>
+  let formDataX;
+  document.querySelector('#btnup').style.display = 'none';
+  const csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+
+
+  function upload_img() {
+    document.querySelector('#_spinner').style.display = 'inline-block';
+    document.querySelector('#btn_txt').innerHTML = 'Processing<span class="animated-dots"></span>';
+    document.querySelector('#_uploadio').style.display = 'none';
+
+    fetch("/upload_files/", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": csrfToken,
+      },
+      body: formDataX,
+    }).then((response) => {
+      response.json().then((data) => {
+          // Error case
+          if (data.error) {
+            console.error("File upload failed");
+            document.getElementById("error_msg").style.display = "block";
+
+            document.querySelector('#_spinner').style.display = 'none';
+            document.querySelector('#btnup').style.display = 'none';
+
+          } else {
+            location.reload();
+          }
+      });
+    });
+  }
+
+  
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dropzone = new Dropzone("#dropzone-custom", {
+    url: "/upload_images/",
+    autoProcessQueue: false,
+  });
+
+  dropzone.on("addedfile", function (file) {
+    if (dropzone.files.length) {
+      var formData = new FormData();
+      for (var i = 0; i < dropzone.files.length; i++) {
+        formData.append("files_txt", dropzone.files[i]);
+      }
+
+      formDataX = formData;
+      document.querySelector('#btnup').style.display = 'flex';
+
+      // Disable autoProcessQueue so that we can handle the upload manually
+      //dropzone.options.autoProcessQueue = false;
+    }
+  });
+
+  dropzone.on("complete", function () {
+    // Clear the dropzone area after all files have been uploaded
+    dropzone.removeAllFiles();
+
+    // Set autoProcessQueue back to true so that the user can upload more files
+    dropzone.options.autoProcessQueue = true;
+  });
+});
+</script>
+{% endblock %} 

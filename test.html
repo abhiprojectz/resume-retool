@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+  <style>
+    :root {
+        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    }
+    
+    body {
+        padding: 30px;
+        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    }
+
+    h1 {
+        margin-bottom: 0;
+        margin-block-end: 3px;
+    }
+
+    h2 {
+        border-bottom: 1px solid black;
+      }
+
+    right {
+        margin-left: auto;
+        float: right;
+    }
+
+    hr {
+        border-top-style: none;
+        border-bottom: 1px solid black;
+    }
+
+    ._logo {
+        width: 100px;
+        height: 100%;
+        margin-left: auto;
+        float: right;
+    }
+
+    h2 {
+        margin-block-end: 10px;
+        margin-block-start: 22px;
+    }
+
+    h3 {
+        font-size: 1.1em;
+        margin-block-end: 0;
+        margin-block-start: 5px;
+    }
+
+    p, ul {
+        margin-block-end: 3px;
+        margin-block-start: 0;
+    }
+  </style>
+</head>
+<body>
+  <img class="_logo" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kokgebg96tn754ti1isq.png" alt="">
+  <div style="clear: both;"></div> 
+  <div id="content" style="margin-top: -55px;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+      var  md_content = `
+## SUMMARY
+Data Science intern with a strong background in machine learning, deep learning, and NLP. Experienced in designing and implementing models to solve complex problems. Achieved significant results in various coding competitions and projects.
+
+## EXPERIENCE
+**SDE intern**, Google India, Bangalore
+<right>Jan 2023 - July 2023</right>
+- Designed and Built a Multiple document summarization Engine from different Viewpoints by Fine-tuning different LLMs under Google Search Team
+- Improved metrics by 2 percent and reduced
+
+**SDE intern**, SAMSUNG (SRI-B), Remote
+<right>May 2022 - July 2022</right>
+      
+## EDUCATION
+**Integrated BTech + Mtech, Information Technology**, IIIT Gwalior
+<right>2018 - 2023</right>
+- CGPA: 8.01/10
+
+**Gyankalash International School**
+<right>2015 - 2017</right>
+- 12th: Percentage 87%
+- 10th: CGPA 9.2/10
+
+## ADDITIONAL INFORMATION
++ **Technical Skills**: C (proficient), C++ (proficient), Python (proficient), SQL (proficient), JavaScript (familiar), Node.js (familiar), React.js (familiar), Flask (familiar), HTML (familiar), CSS (familiar), MongoDB (familiar)
++ **Frameworks/Libraries**: Keras, TensorFlow, PyTorch, Sklearn, AWS, MLFlow, W&B, Numpy, Pandas, Matplotlib, Streamlit
++ **Domain Knowledge**: Machine Learning, Deep Learning, NLP, Computer Vision, MLOps, Web Development
++ **Others**: Git/Github, Heroku, Latex, Linux, openCV
+
+## LINKS
+Github: harshwalia36
+Leetcode: harshwalia (600+ solved)
+Geeks For Geeks: harsh_walia (200+ solved)
+`;
+    document.getElementById('content').innerHTML =
+      marked.parse(md_content);
+  </script>
+</body>
+</html>

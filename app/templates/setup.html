@@ -1,0 +1,46 @@
+{% extends "./base.html" %}
+{% load static %}
+
+
+{% block content %}
+<body>
+  <style>
+
+  </style>
+  <div class="page page-center">
+      <div class="container-tight py-4" style="height: 100vh;">
+        <div class="empty">
+          <p class="title_pg">Cooking up some recipes...</p>
+          <p class="text-muted mt-3" style="    font-weight: 600;
+          ">This could take a while. Take a chili pill.</p>
+        </div>
+      </div>
+  </div>
+    {% csrf_token %}
+<script>
+
+// Using DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+  // Your function code here
+  const csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+
+  fetch('9898/api/setup-dashboard/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken, // add the CSRF token if using Django's CSRF protection
+    },
+    body: JSON.stringify({run_setup: true}),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data);
+      window.location.assign('/dashboard/');
+  } )
+  .catch(error => console.error(error));
+
+});
+
+</script>
+</body>
+{% endblock %} 

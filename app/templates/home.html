@@ -1,0 +1,42 @@
+{% extends "./base.html" %}
+{% load static %}
+
+
+{% block content %}
+<style>
+  
+._export {
+  display: inline-flex;
+padding: 10px;
+justify-content: flex-end;
+align-items: center;
+border-radius: 8px;
+background: #5412E0;
+color: #fff;
+font-weight: 700;
+align-items: center;
+justify-content: center;
+display: flex;
+width: fit-content;
+cursor: pointer;
+}
+</style>
+<body class=" border-top-wide border-primary d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="empty">
+          <div class="empty-header">Welcome</div>
+          <p class="empty-title">Resume Retool AI App</p>
+          <p class="empty-subtitle text-muted">
+            You may login or register!
+          </p>
+          <div class="empty-action" style="    display: flex;
+          gap: 15px;">
+            <a href="{% url 'users:sign_in' %}" class="_export mb-3">Login</a>
+            <a href="{% url 'users:sign_up' %}" class="_export mb-3">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+{% endblock %} 

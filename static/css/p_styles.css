@@ -1,0 +1,214 @@
+* {
+    font-family: 'inter_light';
+}
+
+  
+
+body {
+  background-color: #fffbfb;
+  margin: 0;
+  padding: 0;
+  font-family: 'inter_light';
+}
+
+.vmx {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: row;
+}
+
+.rj {
+  width: 70%;
+}
+
+.lj {
+  width: 30%;
+}
+
+.bn {
+  height: 100%;
+  width: 100%;
+}
+
+.p-10 {
+  padding: 3rem;
+}
+
+.nav_sec {
+    background-color: #FDD870;
+    color: #490F0A;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'inter_light';
+  }
+
+  .cxv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title_pg {
+    font-size:52px;
+    font-weight: 900;
+    color:#F10C51;
+    word-wrap: none;
+}
+
+.nav_link {
+    color: #490F0A;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-right: 15px;
+    font-family: 'inter_light';
+}
+
+
+.cloxdc {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #490F0A;
+}
+
+.flexm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.botm_pan{
+    color: #F10C51;
+}
+
+.nav_sec {
+    background-color: #FDD870;
+    color: #490F0A;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    width: fit-content;
+  }
+
+  .nav_sec_hol {
+    color: #490F0A;
+    border: 1px solid #490F0A;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  .title_pg {
+    font-size:52px;
+    font-weight: 900;
+    color:#F10C51;
+    word-wrap: none;
+}
+
+.logo_ {
+    font-size: 40px;
+    font-weight: 700;
+    color: #490F0A;
+    font-family: 'formula_bold'; 
+}
+
+.cloxdc {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #490F0A;
+}
+.flexm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.botm_pan{
+    color: #F10C51;
+}
+
+.vbmn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.crd_title {
+    font-size: 30px;
+    font-weight: 800;
+    text-decoration: underline;
+    font-family: 'formula_bold';
+    line-height: normal; 
+}
+
+._title_p {
+    font-size:70px;
+    font-weight: 900;
+    color:#F10C51;
+}
+
+.sub_pg {
+    color: #490F0A;
+    width: max-content;
+    font-weight: 700;
+    font-size:16px;
+}
+
+.mn {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.header_text {
+    font-size: 45px;
+    color: #490F0A;
+    text-decoration: underline;
+    font-weight: 800;
+}
+
+.page_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pan_in_wr {
+    border-left: 5px solid #F10C51;
+}
+
+.pans_input {
+    border: none;
+    font-size: 50px;
+    padding: 5px;
+    border-bottom: 1px solid #490F0A;
+    outline: none;
+    margin-left: 15px;
+    font-weight: 700;
+}
+
+.pans_input::placeholder {
+    color:rgba(73.00000324845314, 15.000000055879354, 10.000000353902578, 1);
+    opacity:0.10000000149011612;
+}
+
+.pan_label {
+    color: #490F0A;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.botm_right {
+    display:flex; float: right; 
+    align-items: center;
+    color: #490F0A;
+    font-weight: 500;
+    font-size: 22px;
+    gap: 15px;
+    }
